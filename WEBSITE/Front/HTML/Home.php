@@ -107,8 +107,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <?php  
         include_once 'conf.php';
-        $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-        print_r($pdo->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;")->fetchAll());
         $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
         $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
         ?>
