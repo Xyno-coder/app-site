@@ -8,6 +8,7 @@
 <body>
 <?php
     include_once 'conf.php';
+    $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
     // Déterminer la page actuelle
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
