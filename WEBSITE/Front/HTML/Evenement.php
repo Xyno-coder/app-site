@@ -10,8 +10,8 @@ $password = '';
 $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
 
 try {
-    // Connexion à la base de données
-    $bdd = new PDO($dsn, $user, $password);
+    include_once 'conf.php';
+    $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 } catch (PDOException $e) {
