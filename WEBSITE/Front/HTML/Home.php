@@ -2,6 +2,8 @@
 // Commencer la session avant toute sortie HTML
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    include_once 'conf.php';
+    $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 }
 ?>
 
@@ -106,8 +108,7 @@ if (session_status() === PHP_SESSION_NONE) {
         </section>
 
         <?php  
-        include_once 'conf.php';
-        $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+        
         $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
         $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
         ?>
