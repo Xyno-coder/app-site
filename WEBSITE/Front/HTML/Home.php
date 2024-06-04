@@ -1,8 +1,10 @@
 <?php
 // Commencer la session avant toute sortie HTML
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
+include_once 'conf.php';
+        $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+        $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
+        $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -105,12 +107,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <p>Explorez un univers de sons, de couleurs <br /> et d'énergie débordante à travers nos festivals passionnants. </p>
         </section>
 
-        <?php  
-        include_once 'conf.php';
-        $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-        $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
-        $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
-        ?>
+    
 
         <div class="content-fest">
             <h3>Festivals populaires</h3>
