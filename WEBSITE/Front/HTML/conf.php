@@ -3,3 +3,7 @@ $host = getenv("MYSQL_HOST");
 $user = getenv("MYSQL_USER");
 $pass = getenv("MYSQL_PASSWORD");
 $db = getenv("MYSQL_DATABASE");
+
+echo "Host: $host<br>";
+echo "User: $user<br>";
+echo "Database: $db<br>";
