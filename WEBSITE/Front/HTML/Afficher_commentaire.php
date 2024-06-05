@@ -8,7 +8,7 @@
 <body>
 <?php
     include_once 'conf.php';
-    $bdd = new PDO("mysql:host=herogu.garageisep.com;dbname=App Database", "t3S8KneeKd_app_g9e", "M7fboKJOxkHzSLnr");
+    $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
     // Déterminer la page actuelle
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
