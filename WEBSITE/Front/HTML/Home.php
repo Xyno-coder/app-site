@@ -1,7 +1,14 @@
 <?php
-// Commencer la session avant toute sortie HTML
 session_start();
+
+// Inclure le fichier de configuration
 include_once '../conf.php';
+
+// Vérifiez si les variables d'environnement sont définies
+if (!$host || !$user || !$pass || !$db) {
+    die("Erreur : une ou plusieurs variables d'environnement ne sont pas définies.");
+}
+
 echo "Host: $host<br>";
 echo "User: $user<br>";
 echo "Database: $db<br>";
