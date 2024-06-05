@@ -1,14 +1,29 @@
 <?php
 // Commencer la session avant toute sortie HTML
 session_start();
-include_once '../conf.php';
 
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connexion réussie à la base de données.<br>";
-        $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
-        $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
+// Paramètres de connexion
+$host = 'herogu.garageisep.com';
+$db = 'dIr64sSdId_app_g9e';
+$user = 't3S8KneeKd_app_g9e';
+$pass = 'M7fboKJOxkHzSLnr';
+
+$dsn = "mysql:host=$host;dbname=$db";
+
+try {
+    // Création de l'instance PDO
+    $bdd = new PDO($dsn, $user, $pass);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connexion réussie à la base de données !<br>";
+
+    // Exécuter la requête pour récupérer les événements populaires
+    $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
+    $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
+} catch (\PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
+    exit; // Arrêter le script en cas d'erreur de connexion
+}
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,11 +191,11 @@ include_once '../conf.php';
         <div class="chiffre"><h1>Des nombres qui attestent de notre réussite</h1></div>
 
         <div style="background-color: white;">
-            <?php
+            <!-- <?php
                 echo '<br>';
                 include 'Afficher_commentaire.php';
                 echo '<br>';
-            ?>
+            ?> -->
         </div>
         
     </main>
