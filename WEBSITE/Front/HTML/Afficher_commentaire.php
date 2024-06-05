@@ -7,8 +7,7 @@
 </head>
 <body>
 <?php
-    // include_once '../conf.php';
-    $bdd = new PDO("mysql:host=herogu.garageisep.com;dbname=dIr64sSdId_app_g9e", "t3S8KneeKd_app_g9e", "M7fboKJOxkHzSLnr");
+    include_once '../conf.php';
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connexion réussie à la base de données.<br>";
 
