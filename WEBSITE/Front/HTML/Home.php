@@ -1,15 +1,13 @@
 <?php
 session_start();
-
-// Inclure le fichier de configuration
-include_once '../conf.php';
+include_once __DIR__ . '/../conf.php';
 
 // Vérifiez si les variables d'environnement sont définies
 if (!$host || !$user || !$pass || !$db) {
     die("Erreur : une ou plusieurs variables d'environnement ne sont pas définies.");
 }
 
-echo "Host: $host<br>";
+echo "<h1>Host: $host<br></h1>";
 echo "User: $user<br>";
 echo "Database: $db<br>";
         $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
