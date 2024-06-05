@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php
-    include_once 'conf.php';
+    include_once '../conf.php';
     $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
     // Déterminer la page actuelle
