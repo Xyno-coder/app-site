@@ -1,15 +1,8 @@
 <?php
+// Commencer la session avant toute sortie HTML
 session_start();
-include_once __DIR__ . '/../conf.php';
+include_once '../conf.php';
 
-// Vérifiez si les variables d'environnement sont définies
-if (!$host || !$user || !$pass || !$db) {
-    die("Erreur : une ou plusieurs variables d'environnement ne sont pas définies.");
-}
-
-echo "<h1>Host: $host<br></h1>";
-echo "User: $user<br>";
-echo "Database: $db<br>";
         $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
         $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
