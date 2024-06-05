@@ -2,6 +2,9 @@
 // Commencer la session avant toute sortie HTML
 session_start();
 include_once '../conf.php';
+echo "Host: $host<br>";
+echo "User: $user<br>";
+echo "Database: $db<br>";
         $bdd = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true LIMIT 4;");
         $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
